@@ -19,7 +19,7 @@ function FileItem ({ file, updateFile, isBinPage, isSearchResult }) {
   const [newName, setNewName] = useState(file.name);
   const [showMoveModal, setShowMoveModal] = useState(false);
   const outletContext = useOutletContext();
-  const { triggerRefresh } = outletContext? outletContext.triggerRefresh : {};
+  const { triggerRefresh } = outletContext || {};
 
   useEffect(() => {
     const handleClickOutside = (e) => {

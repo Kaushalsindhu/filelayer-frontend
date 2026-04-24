@@ -36,10 +36,16 @@ export const getFileVersions = async (fileId) => {
 }
 
 export const uploadFileVersion = async (fileId, file) => {
-  const formData = new FormData();
-  formData.append('file', file);
-  const res = await axios.post(`/files/${fileId}/versions`, formData);
-  return res.data;
+  try{
+    const formData = new FormData();
+    formData.append('file', file);
+    const res = await axios.post(`/files/${fileId}/versions`, formData);
+    toast.success(res.data.message || "New version uploaded successfully");
+    return res.data;
+  }
+  catch(err){
+    toast.error(err.response.data.message || "Error uploading new version");
+  }
 }
 
 export const lockFile = async (fileId) => {

@@ -52,7 +52,6 @@ const VersionDrawer = ({ name,fileId, onClose }) => {
           onChange={async (e) => {
             await uploadFileVersion(fileId, e.target.files[0]);
             fetchVersions();
-            toast.success("Version uploaded successfully");
             e.target.value = null; // Reset file input
           }}
         />
